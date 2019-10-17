@@ -348,12 +348,12 @@
 
 <p>思路：</p>
 <ul>
-<li>遍历数据库中所有的业务表<br>遍历所有表中的所有字段</li>
-<li>看该字段的值是否含有所查找的字段值</li>
+<li>遍历数据库中所有的业务表</li>
+<li>遍历所有表中的所有字段,看该字段的值是否含有所查找的字段值</li>
 </ul>
 <p>输出结果如下：</p>
 <blockquote>
-<p>[2019-10-17 15:20:14] VALUE<br>[2019-10-17 15:20:14] 43294:select count(*) from LOG  where instr(VALUE,’湖南’)&gt;0</p>
+<p>[2019-10-17 15:20:14] t_log<br>[2019-10-17 15:20:14] value<br>[2019-10-17 15:20:14] 43294:select count(*) from t_log  where instr(VALUE,’湖南’)&gt;0</p>
 </blockquote>
 
           
