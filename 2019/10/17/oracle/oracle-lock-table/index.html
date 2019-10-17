@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="如何处理oracle锁表 查看哪个用户哪个进程造成的锁表  1234select b.owner,b.object_name,a.session_id,a.locked_mode from v$locked_object a,dba_objects b where b.object_id = a.object_id;select sid, serial#, username, osuser fro">
+<meta name="description" content="如何处理oracle锁表 查看哪个用户哪个进程造成的锁表  123456select b.owner,b.object_name,a.session_id,a.locked_modefrom v$locked_object a,dba_objects bwhere b.object_id = a.object_id;select sid, serial#, username, osuser fro">
 <meta name="keywords" content="oracle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何处理oracle锁表">
 <meta property="og:url" content="http://yoursite.com/2019/10/17/oracle/oracle-lock-table/index.html">
 <meta property="og:site_name" content="笨笨">
-<meta property="og:description" content="如何处理oracle锁表 查看哪个用户哪个进程造成的锁表  1234select b.owner,b.object_name,a.session_id,a.locked_mode from v$locked_object a,dba_objects b where b.object_id = a.object_id;select sid, serial#, username, osuser fro">
+<meta property="og:description" content="如何处理oracle锁表 查看哪个用户哪个进程造成的锁表  123456select b.owner,b.object_name,a.session_id,a.locked_modefrom v$locked_object a,dba_objects bwhere b.object_id = a.object_id;select sid, serial#, username, osuser fro">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-17T08:06:29.549Z">
+<meta property="og:updated_time" content="2019-10-17T08:09:17.752Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何处理oracle锁表">
-<meta name="twitter:description" content="如何处理oracle锁表 查看哪个用户哪个进程造成的锁表  1234select b.owner,b.object_name,a.session_id,a.locked_mode from v$locked_object a,dba_objects b where b.object_id = a.object_id;select sid, serial#, username, osuser fro">
+<meta name="twitter:description" content="如何处理oracle锁表 查看哪个用户哪个进程造成的锁表  123456select b.owner,b.object_name,a.session_id,a.locked_modefrom v$locked_object a,dba_objects bwhere b.object_id = a.object_id;select sid, serial#, username, osuser fro">
 
 
 
@@ -343,7 +343,7 @@
         <h2 id="如何处理oracle锁表"><a href="#如何处理oracle锁表" class="headerlink" title="如何处理oracle锁表"></a>如何处理oracle锁表</h2><ul>
 <li>查看哪个用户哪个进程造成的锁表</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select b.owner,b.object_name,a.session_id,a.locked_mode from v$locked_object a,dba_objects b where b.object_id = a.object_id;</span><br><span class="line"></span><br><span class="line">select sid, serial#, username, osuser from v$session;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select b.owner,b.object_name,a.session_id,a.locked_mode</span><br><span class="line">from v$locked_object a,dba_objects b</span><br><span class="line">where b.object_id = a.object_id;</span><br><span class="line"></span><br><span class="line">select sid, serial#, username, osuser from v$session;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>杀掉造成死锁的进程</li>

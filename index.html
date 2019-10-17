@@ -347,7 +347,7 @@
             <h2 id="如何处理oracle锁表"><a href="#如何处理oracle锁表" class="headerlink" title="如何处理oracle锁表"></a>如何处理oracle锁表</h2><ul>
 <li>查看哪个用户哪个进程造成的锁表</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select b.owner,b.object_name,a.session_id,a.locked_mode from v$locked_object a,dba_objects b where b.object_id = a.object_id;</span><br><span class="line"></span><br><span class="line">select sid, serial#, username, osuser from v$session;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select b.owner,b.object_name,a.session_id,a.locked_mode</span><br><span class="line">from v$locked_object a,dba_objects b</span><br><span class="line">where b.object_id = a.object_id;</span><br><span class="line"></span><br><span class="line">select sid, serial#, username, osuser from v$session;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>杀掉造成死锁的进程</li>
