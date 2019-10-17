@@ -292,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/17/oracle/oracle-lock-table/" itemprop="url">page</a></h1>
+                <a class="post-title-link" href="/2019/10/17/oracle/oracle-lock-table/" itemprop="url">如何处理oracle锁表</a></h1>
         
 
         <div class="post-meta">
@@ -344,7 +344,24 @@
       
         
           
-            
+            <h2 id="如何处理oracle锁表"><a href="#如何处理oracle锁表" class="headerlink" title="如何处理oracle锁表"></a>如何处理oracle锁表</h2><ul>
+<li>查看哪个用户哪个进程造成的锁表</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">select b.owner,b.object_name,a.session_id,a.locked_mode from v$locked_object a,dba_objects b where b.object_id = a.object_id;</span><br><span class="line"></span><br><span class="line">select sid, serial#, username, osuser from v$session;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>杀掉造成死锁的进程</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter system kill session&apos;227,59374&apos;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果利用上面的命令杀死一个进程后，进程状态被置为”killed”，但是锁定的资源长时间没有被释放，那么可以在os再杀死相应的进程，执行下面的语句获得进程号</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select spid, osuser, s.program</span><br><span class="line">from v$session s,v$process p</span><br><span class="line">where s.paddr=p.addr and s.sid=227</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 获取的进程号</span><br></pre></td></tr></table></figure>
+
+
           
         
       
